@@ -21,9 +21,26 @@ page_source =  driver.page_source
 soup = BeautifulSoup(page_source, 'html.parser')
 
 #find the table element 
-table = soup.find(id='simpleTable')
+table = soup.find('table', class_='pub-table')
 
 if table:
-    #Extract the coloumn header
-    headers = []
+    #Extract the column headers using list comprehension
+    headers = [th.get_text().strip() for th in table.find_all('th')]
+
+    #Exract the row data
+    rows = []
+    for tr in table.find_all('tr'):
+       row = [td.get_text().strip() for td in tr.find_all('td')]
+    if row:
+        rows.append(row)
+
+
+    #print column headers
+    print("column headers:")
+    print(headers)
+
+    #print column headers
+    print("\nRow Data:")
+    print(rows)
+
 
