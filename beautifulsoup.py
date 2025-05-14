@@ -71,19 +71,19 @@ if table:
         for i, row in enumerate(rows):
             rows[i] = [headers_tuple[i]] + row
 
-    # write headers
-    write.writerow(headers[2:8])
+        # write headers
+        write.writerow(headers[2:8])
 
-    #write row
-    write.writerows(rows)
+        #write row
+        write.writerows(rows)
 
     print('Data has been successfully saved to table_data.csv!')
 else:
     print('table not found')
 
 
-    #close the webdriver
-    driver.quit( )
+#close the webdriver
+driver.quit( )
 
 
 
